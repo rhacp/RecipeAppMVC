@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#deb887">
+<p align="center">
+    <button type="button" onclick="location.href='/recipes/add'"><h4>&nbsp;&nbsp;Click here to add a recipe!&nbsp;&nbsp;</h4></button>
+</p>
+
+<table>
+    <thead></thead>
+    <tbody>
+    <tr th:if="${recipeListAttributeName.empty}">
+        <p align="center">
+            <td><strong><h3>&nbsp;&nbsp;No recipes!&nbsp;&nbsp;</h3></strong></td>
+        </p>
+    </tr>
+    <tr>
+        <td style="border:1px solid black;" bgcolor="#5f9ea0" th:each="recipe:${recipeListAttributeName}">
+            <!--            name-->
+            <h1>&nbsp;&nbsp;<span th:text="${recipe.name}">&nbsp;&nbsp;Name&nbsp;&nbsp;</span>&nbsp;&nbsp;</h1>
+            <!--            ingredients-->
+            <h4>&nbsp;&nbsp;Ingredients&nbsp;&nbsp;</h4>
+            <ul th:each="ingredient:${recipe.ingredientsMap}">
+                <li th:text="${ingredient.key + ' : ' + ingredient.value}"/>
+            </ul>
+            <!--            description-->
+            <h4><label for="description">&nbsp;&nbsp;Description&nbsp;&nbsp;</label></h4>
+            &nbsp;&nbsp;<textarea id="description" name="description" rows="4" cols="20" style="resize:none" readonly
+                      th:text="${recipe.description}"></textarea>&nbsp;&nbsp;
+            <!--            preparation steps-->
+            <h4><label for="preparationSteps">&nbsp;&nbsp;Preparation Steps:&nbsp;&nbsp;</label></h4>
+            &nbsp;&nbsp;<textarea id="preparationSteps" name="preparationSteps" rows="4" cols="20" style="resize:none" readonly
+                      th:text="${recipe.preparationSteps}"></textarea>&nbsp;&nbsp;
+            <!--            cooking time-->
+            <h4>&nbsp;&nbsp;Cooking time&nbsp;&nbsp;</h4><p align="center" th:text="${recipe.cookingTime}"></p>
+<!--            <form th:action="@{${recipe.}" th:object="${recipeListAttributeName}" method="delete">-->
+<!--                <input type="hidden" th:field="${buyer}">Delete</input>-->
+<!--                <button type="submit" onClick="return confirm('sure?')"/>-->
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#5f9ea0">
+<p align="center"><h1>Add Recipe!</h1></p>
+
+<form action="#" th:action="@{/recipes/add}" th:object="${recipe}" method="post">
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <h4>Ingredients:</h4>
+    <p>Ingredient Name: <input type="text" th:field="*{ingredient1}" /> Quantity: <input type="text" th:field="*{ingredient1}" /></p>
+    <p>Ingredient Name: <input type="text" th:field="*{ingredient2}" /> Quantity: <input type="text" th:field="*{ingredient2}" /></p>
+    <p>Ingredient Name: <input type="text" th:field="*{ingredient3}" /> Quantity: <input type="text" th:field="*{ingredient3}" /></p>
+    <!--    <h4>Description:</h4>-->
+    <!--    <p><input type="text" th:field="*{description}"/></p>-->
+    <h4><label for="description">Description: </label></h4>
+    <textarea id="description" name="description" rows="4" cols="20" style="resize:none"
+              th:field="${recipe.description}"></textarea>
+
+    <h4><label for="preparationSteps">Preparation Steps: </label></h4>
+    <textarea id="preparationSteps" name="preparationSteps" rows="4" cols="20" style="resize:none"
+              th:field="${recipe.preparationSteps}"></textarea>
+
+    <!--            cooking time-->
+    <h4>Cooking time</h4>
+    <p><input type="number" th:field="${recipe.cookingTime}"/></p>
+
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>
